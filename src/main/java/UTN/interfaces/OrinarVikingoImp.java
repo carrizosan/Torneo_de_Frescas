@@ -4,8 +4,8 @@ public class OrinarVikingoImp implements Orinar {
 
     @Override
     public int orinar() {
-        // Los vikingos orinan entre 30 y 80 de alchool de lo que han tomado
+        // Los vikingos orinan entre 400 y 800 ml. de alchool de lo que han tomado
 
-        return (int) (Math.random() * 50) + 30;
+        return (int) (Math.random() * 400) + 400;
     }
 }

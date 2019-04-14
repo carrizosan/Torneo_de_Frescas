@@ -9,7 +9,7 @@ public class Vikingo extends Humano {
 
     public Vikingo (String nombre, int edad, int peso, Beber iBeber, Orinar iOrinar){
         super(nombre, edad, peso, iBeber, iOrinar);
-        bebedorProfesional = (edad > 40) ? 9 : 5;
+        bebedorProfesional = (edad > 40) ? 80 : 40;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Vikingo extends Humano {
             alchoolEnSangre += getiBeber().beber() + bebedorProfesional;
 
             // Tienen 1 / 10 posibilidades de orinarse, el vikingo seguira bebiendo hasta que se orine.
-            if (alchoolEnSangre % 10 == 0) {
+            if (alchoolEnSangre % 8 == 0) {
                 // Si el vikingo orina pierde, y a su alchool se le restara lo que haya orinado
                 orinado =  getiOrinar().orinar();
 

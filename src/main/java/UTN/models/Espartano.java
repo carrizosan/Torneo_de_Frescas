@@ -9,7 +9,7 @@ public class Espartano extends Humano{
 
     public Espartano(String nombre, int edad, int peso, Beber iBeber, Orinar iOrinar){
         super(nombre, edad, peso, iBeber, iOrinar);
-        toleranciaExtra = (peso > 90) ? 5 : 2;
+        toleranciaExtra = (peso > 90) ? 8 : 5;
     }
 
     @Override

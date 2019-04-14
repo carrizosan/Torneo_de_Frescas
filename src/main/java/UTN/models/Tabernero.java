@@ -10,8 +10,8 @@ public class Tabernero extends Humano{
 
     public Tabernero(String nombre, int edad, int peso, Beber iBeber, Orinar iOrinar){
         super(nombre, edad, peso, iBeber, iOrinar);
-        toleranciaExtra = 7;
-        bebedorProfesional = 15;
+        toleranciaExtra = 17;
+        bebedorProfesional = 200;
     }
 
     @Override
