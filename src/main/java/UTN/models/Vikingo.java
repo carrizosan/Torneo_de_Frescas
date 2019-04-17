@@ -26,7 +26,7 @@ public class Vikingo extends Humano {
             // Vikingos suman mas alchool en sangre por pinta ya que son bebedores profesionales
             alchoolEnSangre += getiBeber().beber() + bebedorProfesional;
 
-            // Tienen 1 / 10 posibilidades de orinarse, el vikingo seguira bebiendo hasta que se orine.
+            // Tienen 1 / 8 posibilidades de orinarse, el vikingo seguira bebiendo hasta que se orine.
             if (alchoolEnSangre % 8 == 0) {
                 // Si el vikingo orina pierde, y a su alchool se le restara lo que haya orinado
                 orinado =  getiOrinar().orinar();

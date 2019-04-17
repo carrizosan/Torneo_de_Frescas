@@ -32,22 +32,22 @@ public class App
 
         vikingos = Arrays.asList(new Vikingo("Victor", 37, 110, vikingBebe, vikingOrina),
                                 new Vikingo("Valencio", 25, 90, vikingBebe, vikingOrina),
-                                new Vikingo("Victoria", 32, 66, vikingBebe, vikingOrina),
-                                new Vikingo("Venezzio", 47, 145, vikingBebe, vikingOrina),
-                                new Vikingo("Villar", 55, 70, vikingBebe, vikingOrina),
-                                new Vikingo("Vin", 20, 55, vikingBebe, vikingOrina),
-                                new Vikingo("Vanildo", 16, 99, vikingBebe, vikingOrina),
+//                                new Vikingo("Victoria", 32, 66, vikingBebe, vikingOrina),
+//                                new Vikingo("Venezzio", 47, 145, vikingBebe, vikingOrina),
+//                                new Vikingo("Villar", 55, 70, vikingBebe, vikingOrina),
+//                                new Vikingo("Vin", 20, 55, vikingBebe, vikingOrina),
+//                                new Vikingo("Vanildo", 16, 99, vikingBebe, vikingOrina),
                                 new Vikingo("Viccenzo", 33, 109, vikingBebe, vikingOrina),
                                 new Vikingo("Vi", 39, 145, vikingBebe, vikingOrina),
                                 new Vikingo("Vikinto", 27, 95, vikingBebe, vikingOrina));
 
         espartanos = Arrays.asList(new Espartano("Esteban", 29, 80, spartanBebe, spartanOrina),
                                 new Espartano("Eduardo", 66, 79, spartanBebe, spartanOrina),
-                                new Espartano("Enrique", 34, 201, spartanBebe, spartanOrina),
-                                new Espartano("El Sharawy", 63, 71, spartanBebe, spartanOrina),
-                                new Espartano("Enzo", 33, 112, spartanBebe, spartanOrina),
-                                new Espartano("Embolo", 38, 91, spartanBebe, spartanOrina),
-                                new Espartano("Eto'o", 47, 55, spartanBebe, spartanOrina),
+//                                new Espartano("Enrique", 34, 201, spartanBebe, spartanOrina),
+//                                new Espartano("El Sharawy", 63, 71, spartanBebe, spartanOrina),
+//                                new Espartano("Enzo", 33, 112, spartanBebe, spartanOrina),
+//                                new Espartano("Embolo", 38, 91, spartanBebe, spartanOrina),
+//                                new Espartano("Eto'o", 47, 55, spartanBebe, spartanOrina),
                                 new Espartano("Eladio", 19, 97, spartanBebe, spartanOrina),
                                 new Espartano("Eve", 28, 86, spartanBebe, spartanOrina),
                                 new Espartano("Emanuel", 27, 100, spartanBebe, spartanOrina));
@@ -56,6 +56,22 @@ public class App
             // Conectarse a la base de datos
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/torneo_frescas", "root", "");
 
+            Thread.sleep(2000);
+            System.out.println("PARTICIPANTES VIKINGOS: " + vikingos);
+            Thread.sleep(2000);
+            System.out.println("\n\nPARTICIPANTES ESPARTANOS: " + espartanos);
+
+            vikingos = vikingos.stream()
+                    .sorted(Comparator.comparingInt(Vikingo::getPeso))
+                    .collect(Collectors.toList());
+            espartanos = espartanos.stream()
+                    .sorted(Comparator.comparingInt(Espartano::getPeso))
+                    .collect(Collectors.toList());
+
+            Thread.sleep(2000);
+            System.out.println("\n\nVIKINGOS EN FILA POR PESO ESPERANDO SU TURNO: " + vikingos);
+            Thread.sleep(2000);
+            System.out.println("\n\nESPARTANOS EN FILA POR PESO ESPERANDO SU TURNO: " + espartanos);
 
             Humano ebrio = realizarTorneoDeFrescas(vikingos, espartanos, connection);
 
@@ -88,24 +104,6 @@ public class App
     public static Humano realizarTorneoDeFrescas(List<Vikingo> vikingos, List<Espartano> espartanos, Connection cn) throws InterruptedException, SQLException {
         int puntosCampeon = 0;
         Humano ganador = null;
-
-        Thread.sleep(2000);
-        System.out.println("PARTICIPANTES VIKINGOS: " + vikingos);
-        Thread.sleep(2000);
-        System.out.println("\n\nPARTICIPANTES ESPARTANOS: " + espartanos);
-
-        vikingos = vikingos.stream()
-                .sorted(Comparator.comparingInt(Vikingo::getPeso))
-                .collect(Collectors.toList());
-        espartanos = espartanos.stream()
-                .sorted(Comparator.comparingInt(Espartano::getPeso))
-                .collect(Collectors.toList());
-
-        Thread.sleep(2000);
-        System.out.println("\n\nVIKINGOS EN FILA POR PESO ESPERANDO SU TURNO: " + vikingos);
-        Thread.sleep(2000);
-        System.out.println("\n\nESPARTANOS EN FILA POR PESO ESPERANDO SU TURNO: " + espartanos);
-
 
         for(Vikingo v : vikingos) {
             for (Espartano e : espartanos) {
